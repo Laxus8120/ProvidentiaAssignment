@@ -17,27 +17,30 @@ class TaskService {
         }
     }
 
-    async destroy(){
+    async destroy(id){
         try {
-            
+            const result = await this.taskRepository.delete(id);
+            return result;
         } catch (error) {
             console.log('something went wrong in service layer');
             throw{error};
         }
     }
 
-    async get(){
+    async get(id){
         try {
-            
+            const result  = await this.taskRepository.get(id);
+            return result;
         } catch (error) {
             console.log('something went wrong in service layer');
             throw{error};
         }
     }
 
-    async update(){
+    async update(data){
         try {
-            
+            const result = await this.taskRepository.update(data);
+            return result;
         } catch (error) {
             console.log('something went wrong in service layer');
             throw{error};

@@ -19,27 +19,38 @@ class TaskRepository {
         }
     }
 
-    async delete(){
+    async delete(id){
         try {
-            
+                await Task.destroy({
+                where: {
+                  task_id: id
+                }
+              });
+              return true;
         } catch (error) {
-            console.log('not able to create task');
+            console.log('not able to delete task');
+            console.log(error);
             throw{error};
         }
     }
 
-    async get(){
+    async get(id){
         try {
-            
+            const data = await Task.findByPk(id)
+            return data;
         } catch (error) {
-            console.log('not able to create task');
+            console.log('not able to find the  task');
             throw{error};
         }
     }
 
-    async update(){
+    async update(data){
         try {
-            
+            const task = await Task.findOne({ where: { task_id: data.id } });
+            task.task_title = data.taskTitle;
+            task.task_description  = data.description;
+            await task.save();
+            return task;
         } catch (error) {
             console.log('not able to create task');
             throw{error};
