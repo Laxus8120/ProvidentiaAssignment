@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Laxus8120@",
-    "database": "Task_DB",
+    "database": "Task",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

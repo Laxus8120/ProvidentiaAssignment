@@ -3,28 +3,26 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Tasks', {
-      task_id: {
+      User_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
-        allowNull : false
       },
-      task_title: {
+      title: {
         type: Sequelize.STRING,
         allowNull : false
       },
-      task_description: {
+      description: {
         type: Sequelize.TEXT,
-        allowNull : true
-      },
-      task_due_date: {
-        type: Sequelize.DATE,
         allowNull : false
       },
-      task_status: {
-        type: Sequelize.ENUM('COMPLETED', 'NOT_COMPLETED'),
-        defaultValue: 'NOT_COMPLETED',
-        allowNull: false,
+      dueDate: {
+        type: Sequelize.DATE,
+        allowNull : true
+      },
+      status: {
+        type: Sequelize.ENUM('COMPLETED','NOT_COMPLETED'),
+        defaultValue : 'NOT_COMPLETED'
       },
       createdAt: {
         allowNull: false,

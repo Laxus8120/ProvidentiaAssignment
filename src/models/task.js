@@ -14,29 +14,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Task.init({
-    task_id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+    User_id : {
+      type : DataTypes.UUID,
+      primaryKey : true,
       allowNull : false
     },
-    task_title: {
+    title: {
       type : DataTypes.STRING,
       allowNull : false
     },
-    task_description: {
+    description: {
       type : DataTypes.TEXT,
-      allowNull : true
-    },
-    task_due_date: {
-      type: DataTypes.DATE,
       allowNull : false
     },
-    task_status: {
-      type : DataTypes.ENUM('COMPLETED', 'NOT_COMPLETED'),
-      defaultValue: 'NOT_COMPLETED',
-      allowNull: false,
-
+    dueDate: {
+      type : DataTypes.DATE,
+      allowNull : true
+    }
+,
+    status: {
+      type : DataTypes.ENUM('COMPLETED','NOT_COMPLETED'),
+      defaultValue : 'NOT_COMPLETED'
     }
   }, {
     sequelize,
